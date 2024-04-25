@@ -1,0 +1,95 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{url,amsmath,amssymb,mathrsfs,enumerate,dsfont}
+\usepackage[space,extendedchars]{grffile}
+\usepackage{algorithm,algorithmic}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usetikzlibrary{automata,arrows}
+\usepackage{subfigure}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{framed}
+\usepackage{paralist}
+\usepackage{multirow}
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\usetikzlibrary{arrows,shapes, automata}
+\setkomafont{disposition}{\normalfont\bfseries}
+\setlength\parindent{0pt}
+
+\title{Mathematik für Informatiker \\ Kombinatorik, Stochastik und Statistik \\ Ubungsblatt 1}
+\author{Tom Paßberg , Iain Dorsch}
+\date{}
+\begin{document}
+
+\maketitle
+
+\newpage
+\section*{Aufgabe 5}
+Funktion um die Anzahl der geraden Zahlen zwischen 1 und n zu berechnen, die durch mindestens einen der Teiler teilbar sind.
+\begin{lstlisting}
+use rayon::iter::{IntoParallelIterator, ParallelIterator};
+
+fn count_numbers(n: u64, teiler: &Vec<u64>) -> usize {
+    (2..=n).into_par_iter()
+        .filter(|&n| n % 2 == 0 && teiler.iter().any(|&t| n % t == 0))
+        .count()
+}  
+\end{lstlisting}
+
+Output für $ n = 10, 100 , \ldots, 10000000000 $:
+
+\begin{lstlisting}
+fn main() {
+    let teiler: Vec<u64> = vec![3,5,7,11];
+    for n in (1..=10).map(|i| 10u64.pow(i)) {
+        println!(
+            "{:11} gerade Zahlen zwischen 1 und {n:11} 
+            sind durch mindestens einen der Teiler {} teilbar.", 
+            count_numbers(n, &teiler), 
+            teiler.iter().map(|&t| 
+                t.to_string()).collect::<Vec<String>>().join(", ")
+        );
+    }  
+} 
+\end{lstlisting}
+
+Output:
+
+\begin{lstlisting}
+2 gerade Zahlen zwischen 1 und 10 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+30 gerade Zahlen zwischen 1 und 100 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+292 gerade Zahlen zwischen 1 und 1000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+2922 gerade Zahlen zwischen 1 und 10000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+29220 gerade Zahlen zwischen 1 und 100000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+292208 gerade Zahlen zwischen 1 und 1000000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+2922077 gerade Zahlen zwischen 1 und 10000000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+29220780 gerade Zahlen zwischen 1 und 100000000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+292207792 gerade Zahlen zwischen 1 und 1000000000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+2922077922 gerade Zahlen zwischen 1 und 10000000000 sind durch mindestens 
+einen der Teiler 3, 5, 7, 11 teilbar.
+\end{lstlisting}      
+
+\end{document}
