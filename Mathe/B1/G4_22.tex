@@ -39,15 +39,15 @@
 
 \newpage
 \section*{Aufgabe 5}
-Funktion um die Anzahl der geraden Zahlen zwischen 1 und n zu berechnen, die durch mindestens einen der Teiler teilbar sind.
+Funktion um die Anzahl der Zahlen zwischen 1 und n zu berechnen, die durch mindestens einen der Teiler teilbar sind.
 \begin{lstlisting}
 use rayon::iter::{IntoParallelIterator, ParallelIterator};
 
 fn count_numbers(n: u64, teiler: &Vec<u64>) -> usize {
-    (2..=n).into_par_iter()
-        .filter(|&n| n % 2 == 0 && teiler.iter().any(|&t| n % t == 0))
+    (1..=n).into_par_iter()
+        .filter(|&n| teiler.iter().any(|&t| n % t == 0))
         .count()
-}  
+}   
 \end{lstlisting}
 
 Output für $ n = 10, 100 , \ldots, 10000000000 $:
@@ -70,26 +70,26 @@ fn main() {
 Output:
 
 \begin{lstlisting}
-2 gerade Zahlen zwischen 1 und 10 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-30 gerade Zahlen zwischen 1 und 100 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-292 gerade Zahlen zwischen 1 und 1000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-2922 gerade Zahlen zwischen 1 und 10000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-29220 gerade Zahlen zwischen 1 und 100000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-292208 gerade Zahlen zwischen 1 und 1000000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-2922077 gerade Zahlen zwischen 1 und 10000000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-29220780 gerade Zahlen zwischen 1 und 100000000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-292207792 gerade Zahlen zwischen 1 und 1000000000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
-2922077922 gerade Zahlen zwischen 1 und 10000000000 sind durch mindestens 
-einen der Teiler 3, 5, 7, 11 teilbar.
+6 Zahlen zwischen 1 und 10 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+59 Zahlen zwischen 1 und 100 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+585 Zahlen zwischen 1 und 1000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+5845 Zahlen zwischen 1 und 10000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+58441 Zahlen zwischen 1 und 100000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+584416 Zahlen zwischen 1 und 1000000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+5844156 Zahlen zwischen 1 und 10000000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+58441559 Zahlen zwischen 1 und 100000000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+584415585 Zahlen zwischen 1 und 1000000000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
+5844155845 Zahlen zwischen 1 und 10000000000 sind durch mindestens einen
+der Teiler 3, 5, 7, 11 teilbar.
 \end{lstlisting}      
 
 \end{document}
