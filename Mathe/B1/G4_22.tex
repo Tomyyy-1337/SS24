@@ -38,6 +38,117 @@
 \maketitle
 
 \newpage
+
+\section*{Aufgabe 3}
+\begin{align*}
+    a &= |\{ x \mod 3 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3} \\
+    b &= |\{ x \mod 5 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5} \\
+    c &= |\{ x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{7} \\
+    d &= |\{ x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{11} \\
+    ab &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5} \\
+    ac &= |\{ x \mod 3 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 7} \\
+    ad &= |\{ x \mod 3 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 11} \\
+    bc &= |\{ x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 7} \\
+    bd &= |\{ x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 11} \\
+    cd &= |\{ x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{7 \cdot 11} \\
+    abc &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5 \cdot 7} \\
+    abd &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5 \cdot 11} \\
+    acd &= |\{ x \mod 3 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 7 \cdot 11} \\
+    bcd &= |\{ x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 7 \cdot 11} \\
+    abcd &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| \\&= \frac{100000}{3 \cdot 5 \cdot 7 \cdot 11} \\
+    \text{result} &= a + b + c + d - ab - ac - ad - bc - bd - cd + abc + abd + acd + bcd - abcd \\&= 58441 \\
+\end{align*}
+
+\newpage
+\section*{Aufgabe 4}
+\subsection*{a)}
+Für jede weiter Stufe wird wie voerherige Mengen kopiert und um das nächste Element erweitert.\\
+Die neuen und die alten Elemente werden in einer neuen Menge zusammengefasst.\\
+\begin{itemize}
+    \item $n = 0$ \\
+    $ \{ \{\} \} $
+    \item $n = 1$ \\
+    $ \{ \{\}, \{1\} \} $
+    \item $n = 2$ \\
+    $ \{ \{\}, \{1\}, \{2\}, \{1, 2\} \} $
+    \item $n = 3$ \\
+    $ \{ \{\}, \{1\}, \{2\}, \{1, 2\}, \{3\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\} \} $
+    \item $n = 4$ \\
+    $ \{ \{\}, \{1\}, \{2\}, \{1, 2\}, \{3\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}, \\ \{4\}, \{1, 4\}, \{2, 4\}, \{1, 2, 4\}, \{3, 4\}, \{1, 3, 4\}, \{2, 3, 4\}, \{1, 2, 3, 4\} \} $
+\end{itemize}
+
+\subsection*{b)}
+\subsection*{Beschreibung}
+Für $n = 0$ gibt der Algorithmus eine Liste mit einer leeren Liste zurück. (Eine Menge in der sich eine leere Menge befindet)\\
+für $n > 0$ wird die Funktion rekursiv aufgerufen um die Teilmengen von $\{1, \ldots, n-1\}$ zu berechnen.\\
+Die Teilmengen von $\{1, \ldots, n\}$ ergeben sich aus den Teilmengen von $\{1, \ldots, n-1\}$, indem von jeder Teilmengen aus $\{1, \ldots, n-1\}$ eine Kopie erstellt wird, in die n hinzugefügt wird.\\
+\newpage
+\subsection*{Funktion zur Berechnung der Teilmengen von $\{1, \ldots, n\}$}
+\begin{lstlisting}
+fn teilmengen_rec(n: u8) -> Vec<Vec<u8>> {
+    if n == 0 {
+        return vec![vec![]];
+    } 
+    teilmengen_rec(n - 1)
+        .into_iter()
+        .flat_map(|old| {
+            let mut new = old.clone();
+            new.push(n);
+            [old, new]
+        })
+        .collect()
+}
+\end{lstlisting}
+
+\subsection*{Funktiosnaufrufe für $n = 1, \ldots, 20$}
+\begin{lstlisting}
+fn main() {
+    for i in 1..=20 {
+        let teilmengen = teilmengen_rec(i);
+        println!(
+            "Anzahl der Teilmengen von {{1,..,{}}}: {}", 
+            i, teilmengen.len()
+        );
+        if i <= 4 {
+            println!("Teilmengen von {{1,..,{}}}: {:?}", i, teilmengen);
+        }
+    }  
+}
+\end{lstlisting}
+
+\newpage
+\subsection*{Output:}
+\begin{lstlisting}
+Anzahl der Teilmengen von {1,..,1}: 2
+Teilmengen von {1,..,1}: [[], [1]]
+Anzahl der Teilmengen von {1,..,2}: 4
+Teilmengen von {1,..,2}: [[], [2], [1], [1, 2]]
+Anzahl der Teilmengen von {1,..,3}: 8
+Teilmengen von {1,..,3}: [[], [3], [2], [2, 3], [1], 
+[1, 3], [1, 2], [1, 2, 3]]
+Anzahl der Teilmengen von {1,..,4}: 16
+Teilmengen von {1,..,4}: [[], [4], [3], [3, 4], [2], 
+[2, 4], [2, 3], [2, 3, 4], [1], [1, 4], [1, 3], [1, 3, 4], 
+[1, 2], [1, 2, 4], [1, 2, 3], [1, 2, 3, 4]]
+Anzahl der Teilmengen von {1,..,5}: 32
+Anzahl der Teilmengen von {1,..,6}: 64
+Anzahl der Teilmengen von {1,..,7}: 128
+Anzahl der Teilmengen von {1,..,8}: 256
+Anzahl der Teilmengen von {1,..,9}: 512
+Anzahl der Teilmengen von {1,..,10}: 1024
+Anzahl der Teilmengen von {1,..,11}: 2048
+Anzahl der Teilmengen von {1,..,12}: 4096
+Anzahl der Teilmengen von {1,..,13}: 8192
+Anzahl der Teilmengen von {1,..,14}: 16384
+Anzahl der Teilmengen von {1,..,15}: 32768
+Anzahl der Teilmengen von {1,..,16}: 65536
+Anzahl der Teilmengen von {1,..,17}: 131072
+Anzahl der Teilmengen von {1,..,18}: 262144
+Anzahl der Teilmengen von {1,..,19}: 524288
+Anzahl der Teilmengen von {1,..,20}: 1048576
+\end{lstlisting}
+
+\newpage
 \section*{Aufgabe 5}
 Funktion um die Anzahl der Zahlen zwischen 1 und n zu berechnen, die durch mindestens einen der Teiler teilbar sind.
 \begin{lstlisting}
@@ -50,7 +161,7 @@ fn count_numbers(n: u64, teiler: &Vec<u64>) -> usize {
 }   
 \end{lstlisting}
 
-Output für $ n = 10, 100 , \ldots, 10000000000 $:
+Funktiosnaufrufe für $ n = 10, 100 , \ldots, 10000000000 $ auf:
 
 \begin{lstlisting}
 fn main() {

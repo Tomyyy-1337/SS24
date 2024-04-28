@@ -1,7 +1,11 @@
 fn main() {
-    let teilmengen = teilmengen_rec(4);
-    println!("Teilmengen: {:?}", teilmengen);
-    println!("Anzahl der Teilmengen: {}", teilmengen.len());
+    for i in 1..=20 {
+        let teilmengen = teilmengen_rec(i);
+        println!("Anzahl der Teilmengen von {{1,..,{}}}: {}", i, teilmengen.len());
+        if i <= 4 {
+            println!("Teilmengen von {{1,..,{}}}: {:?}", i, teilmengen);
+        }
+    }  
 }
 
 fn teilmengen(n: u8) -> Vec<Vec<u8>> { 
