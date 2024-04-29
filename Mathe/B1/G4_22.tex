@@ -39,23 +39,39 @@
 
 \newpage
 
+\section*{Aufgabe 2}
+Die Anzahl der kürzeseten Pfade $c$ wird gegeben durch die Formel:
+\begin{align*}
+    c &= \frac{(n - 1 + m  - 1)!}{(n-1)! \cdot (m-1)!} \\[12px]
+    &= \binom{n + m - 2}{n - 1}
+\end{align*}
+
+\subsection*{Beweis:}
+\textbf{Indunktionsanfang:}
+Für $n = 1$ und $m = 1$ ist die Position von Start und Ziel identisch. 
+Es gibt trivial einen kürzesten Pfad. \\
+\begin{align*}
+    c = \binom{0}{0} = 1
+\end{align*}
+\textbf{Indunktionsschritt:}
+
 \section*{Aufgabe 3}
 \begin{align*}
-    a &= |\{ x \mod 3 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3} \\
-    b &= |\{ x \mod 5 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5} \\
-    c &= |\{ x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{7} \\
-    d &= |\{ x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{11} \\
-    ab &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5} \\
-    ac &= |\{ x \mod 3 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 7} \\
-    ad &= |\{ x \mod 3 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 11} \\
-    bc &= |\{ x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 7} \\
-    bd &= |\{ x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 11} \\
-    cd &= |\{ x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{7 \cdot 11} \\
-    abc &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5 \cdot 7} \\
-    abd &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 5 \cdot 11} \\
-    acd &= |\{ x \mod 3 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{3 \cdot 7 \cdot 11} \\
-    bcd &= |\{ x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| = \frac{100000}{5 \cdot 7 \cdot 11} \\
-    abcd &= |\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \}| \\&= \frac{100000}{3 \cdot 5 \cdot 7 \cdot 11} \\
+    a &= \left|\left\{ x \mod 3 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3}\right\rfloor \\
+    b &= \left|\left\{ x \mod 5 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{5}\right\rfloor \\
+    c &= \left|\left\{ x \mod 7 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{7}\right\rfloor \\
+    d &= \left|\left\{ x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{11}\right\rfloor \\
+    ab &= \left|\left\{ x \mod 3 = 0 \land x \mod 5 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 5}\right\rfloor \\
+    ac &= \left|\left\{ x \mod 3 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 7}\right\rfloor \\
+    ad &= \left|\left\{ x \mod 3 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 11}\right\rfloor \\
+    bc &= \left|\left\{ x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{5 \cdot 7}\right\rfloor \\
+    bd &= \left|\left\{ x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{5 \cdot 11}\right\rfloor \\
+    cd &= \left|\left\{ x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{7 \cdot 11}\right\rfloor \\
+    abc &= \left|\left\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 5 \cdot 7}\right\rfloor \\
+    abd &= \left|\left\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 5 \cdot 11}\right\rfloor \\
+    acd &= \left|\left\{ x \mod 3 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{3 \cdot 7 \cdot 11}\right\rfloor \\
+    bcd &= \left|\left\{ x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| = \left\lfloor\frac{100000}{5 \cdot 7 \cdot 11}\right\rfloor \\
+    abcd &= \left|\left\{ x \mod 3 = 0 \land x \mod 5 = 0 \land x \mod 7 = 0 \land x \mod 11 = 0 \mid 0 \leq x \leq 100000 \right\}\right| \\&= \left\lfloor\frac{100000}{3 \cdot 5 \cdot 7 \cdot 11}\right\rfloor \\
     \text{result} &= a + b + c + d - ab - ac - ad - bc - bd - cd + abc + abd + acd + bcd - abcd \\&= 58441 \\
 \end{align*}
 
