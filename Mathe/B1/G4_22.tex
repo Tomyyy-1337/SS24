@@ -62,7 +62,7 @@
 \newpage
 \section*{Aufgabe 4}
 \subsection*{a)}
-Für jede weiter Stufe wird wie voerherige Mengen kopiert und um das nächste Element erweitert.\\
+Für jede weiter Stufe wird die voerherige Mengen kopiert und um das nächste Element erweitert.\\
 Die neuen und die alten Elemente werden in einer neuen Menge zusammengefasst.\\
 \begin{itemize}
     \item $n = 0$ \\
@@ -80,7 +80,7 @@ Die neuen und die alten Elemente werden in einer neuen Menge zusammengefasst.\\
 \subsection*{b)}
 \subsection*{Beschreibung}
 Für $n = 0$ gibt der Algorithmus eine Liste mit einer leeren Liste zurück. (Eine Menge in der sich eine leere Menge befindet)\\
-für $n > 0$ wird die Funktion rekursiv aufgerufen um die Teilmengen von $\{1, \ldots, n-1\}$ zu berechnen.\\
+Für $n > 0$ wird die Funktion rekursiv aufgerufen um die Teilmengen von $\{1, \ldots, n-1\}$ zu berechnen.\\
 Die Teilmengen von $\{1, \ldots, n\}$ ergeben sich aus den Teilmengen von $\{1, \ldots, n-1\}$, indem von jeder Teilmengen aus $\{1, \ldots, n-1\}$ eine Kopie erstellt wird, in die n hinzugefügt wird.\\
 \newpage
 \subsection*{Funktion zur Berechnung der Teilmengen von $\{1, \ldots, n\}$}
