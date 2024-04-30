@@ -38,6 +38,20 @@
 \maketitle
 
 \newpage
+\section*{Aufgabe 1}
+\textbf{Zu zeigen:} Für alle $n \in \mathbb{N}_0$ gilt
+\begin{align*}
+    \sum_{j=0}^{n} \binom{n}{j}^2 = \binom{2n}{n}
+\end{align*}
+\textbf{Beweis:}
+\begin{align}
+    \sum_{j=0}^{n} \binom{n}{j}^2 &= \sum_{j=0}^{n} \binom{n}{j} \cdot \binom{n}{j} \\
+    &= \sum_{j=0}^{n} \binom{n}{j} \cdot \binom{n}{n - j} \\
+    &= \binom{n + n}{n} \\
+    &= \binom{2n}{n}
+\end{align}
+(2) folgt aus Skript 1.2.5 \\
+(3) folgt aus Skript 1.2.12.\\
 
 \section*{Aufgabe 2}
 Die Anzahl der kürzeseten Pfade $c$ wird gegeben durch die Formel:
