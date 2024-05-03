@@ -67,7 +67,8 @@ Es gibt trivial einen kürzesten Pfad. \\
 \begin{align*}
     c = \binom{0}{0} = 1
 \end{align*}
-\textbf{Indunktionsschritt:}
+\textbf{Indunktionsschritt:} 
+Hallo
 
 \section*{Aufgabe 3}
 \begin{align*}
@@ -191,12 +192,12 @@ fn count_numbers(n: u64, teiler: &Vec<u64>) -> usize {
 }   
 \end{lstlisting}
 
-Funktiosnaufrufe für $ n = 10, 100 , \ldots, 10000000000 $ auf:
+Funktiosnaufrufe für $ n = 10, 100 , \ldots, 10000000000 $:
 
 \begin{lstlisting}
 fn main() {
     let teiler: Vec<u64> = vec![3,5,7,11];
-    for n in (1..=10).map(|i| 10u64.pow(i)) {
+    for n in (1..=10).scan(1, |n, _| { *n *= 10; Some(*n)}) {
         println!(
             "{:11} gerade Zahlen zwischen 1 und {n:11} 
             sind durch mindestens einen der Teiler {} teilbar.", 

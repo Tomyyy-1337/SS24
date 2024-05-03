@@ -2,7 +2,7 @@ use rayon::iter::{IntoParallelIterator, ParallelIterator};
 
 fn main() {
     let teiler: Vec<u64> = vec![3,5,7,11];
-    for n in (1..=10).map(|i| 10u64.pow(i)) {
+    for n in (1..=10).scan(1, |n, _| { *n *= 10; Some(*n)}) {
         println!(
             "{:11} Zahlen zwischen 1 und {n:11} sind durch mindestens einen der Teiler {} teilbar.", 
             count_numbers(n, &teiler), 
