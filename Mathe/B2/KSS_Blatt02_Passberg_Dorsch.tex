@@ -148,7 +148,7 @@ Die Warscheinlichkeit, dass kein Brief beim Richtigen Empfänger ankommt ist $37
 Die Anzahl der Permutaionen ist $4! = 24$.
 Die Anzahl der Permutationen, bei denen kein Brief beim Richtigen Empfänger ankommt ist $9$, das ergibt sich aus der Formel 
 für die Anzahl der fixpunktfreien Permutationen. 
-\begin{enumerate}
+\begin{itemize}
     \item n = 1: \\ 
     $ a(n) = 0 $
     \item n = 2: \\
@@ -157,7 +157,7 @@ für die Anzahl der fixpunktfreien Permutationen.
     $ a(n) = 2 $
     \item n = 4: \\
     $ a(n) = 9 $
-\end{enumerate}
+\end{itemize}
 Die Warscheinlichkeit ergibt sich aus
 \begin{align*}
     \frac{9}{4!} = 0.375
@@ -216,6 +216,7 @@ Die Bank darf demnach maximal n = 12 wahlen.
 \end{lstlisting}
 
 \section*{Aufgabe 5}
+Schritte nach rechts werden mit 0 und Schritte nach unten mit 1 kodiert.
 \subsection*{a)}
 \begin{lstlisting}
 fn get_paths_a(
@@ -260,5 +261,59 @@ fn get_paths_b(
 }
 \end{lstlisting}    
 
+\textbf{Funktionsaufruf:}
+\begin{lstlisting}
+fn main() {
+    let mut all_paths = vec![];
+    get_paths_a(3, 2, &mut vec![], &mut all_paths);
+
+    let mut upper_paths = vec![];
+    get_paths_b(3, 2, 0, &mut vec![], &mut upper_paths);
+
+    println!("Aufgabenteil a: {:?}", all_paths);
+    println!("Aufgabenteil b: {:?}", upper_paths);
+}
+\end{lstlisting}
+
+\textbf{Output:}
+\begin{lstlisting}
+Aufgabenteil a: [[0, 0, 0, 1, 1], [0, 0, 1, 0, 1], [0, 0, 1, 1, 0], 
+[0, 1, 0, 0, 1], [0, 1, 0, 1, 0], [0, 1, 1, 0, 0], [1, 0, 0, 0, 1], 
+[1, 0, 0, 1, 0], [1, 0, 1, 0, 0], [1, 1, 0, 0, 0]]
+Aufgabenteil b: [[0, 0, 0, 1, 1], [0, 0, 1, 0, 1], [0, 0, 1, 1, 0], 
+[0, 1, 0, 0, 1], [0, 1, 0, 1, 0]]
+\end{lstlisting}
+
+\section*{Aufgabe 6}
+\subsection*{a)}
+
+\subsection*{b)}
+Binomischer Lehrsatz:
+\begin{align*}
+    (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+\end{align*}
+
+\textbf{Zu zeigen:}
+\begin{align*}
+    (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k \implies (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k}
+\end{align*}
+\textbf{Beweis:} \\
+Wir müssen zeigen, dass
+\begin{align*}
+    \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k}
+\end{align*}
+
+Für $0 \le k_1 \le n$ und $k_2 = n - k_1$ gilt:
+\begin{align}
+    a^{n-k_1} b^{k_1} &= a^{n - k_1} b^{n - (n - k_1)} \\
+    &= a^{k_2} b^{n-k_2} 
+\end{align}
+und 
+\begin{align*}
+    \binom{n}{k_1} = \binom{n}{k_2}
+\end{align*}
+
+Die beiden Summen sind also identisch, die Summanden sind in umgekehrter Reihenfolge. 
+Daraus folgt, dass die zu zeigende Aussage Wahr ist.
 
 \end{document}
