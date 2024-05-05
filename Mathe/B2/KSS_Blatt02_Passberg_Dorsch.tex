@@ -145,12 +145,33 @@ Die Spiegelungen $1,\ldots,5$ sind die Spiegelungen an den Geraden, die durch di
 \section*{Aufgabe 3}
 \subsection*{a)}
 Die Warscheinlichkeit, dass kein Brief beim Richtigen Empfänger ankommt ist $37,5\%$.
-\textbf{TODO: Rechenweg}
+Die Anzahl der Permutaionen ist $4! = 24$.
+Die Anzahl der Permutationen, bei denen kein Brief beim Richtigen Empfänger ankommt ist $9$, das ergibt sich aus der Formel 
+für die Anzahl der fixpunktfreien Permutationen. 
+\begin{enumerate}
+    \item n = 1: \\ 
+    $ a(n) = 0 $
+    \item n = 2: \\
+    $ a(n) = 1 $
+    \item n = 3: \\
+    $ a(n) = 2 $
+    \item n = 4: \\
+    $ a(n) = 9 $
+\end{enumerate}
+Die Warscheinlichkeit ergibt sich aus
 \begin{align*}
     \frac{9}{4!} = 0.375
 \end{align*}
 
 \subsection*{b)}
+\begin{align*}
+    a(n) = \left\{ 
+        \begin{array}{ c l }
+            0 & \quad \textrm{if } n = 1 \\
+            n \cdot a(n-1) + (-1)^n & \quad \textrm{if } n > 1 \\
+        \end{array}
+    \right.
+\end{align*}
 
 \section*{Aufgabe 4}
 \subsection*{a)}
