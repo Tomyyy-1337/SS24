@@ -1,0 +1,2 @@
+Compile:
+[~] gcc -lm -O .\hello_world.c

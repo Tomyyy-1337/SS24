@@ -1,0 +1,102 @@
+Aufgabe 2
+
+cd /scratch/HPC/HPC_I/SS24
+
+mkdir passberg
+
+chmod -R 700 passberg/
+
+
+Aufgabe 3
+
+gcc compile only:
+gcc -S hello_world.c
+
+generates hello_world.s
+
+assemble hello_world.s:
+as hello_world.s -o hello_world.o
+
+generates hello_world.o
+
+link hello_world.o
+gcc -o world_gcc hello_world.o
+
+generates executable world_gcc
+
+first gcc version:
+gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-20)
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+module load gcc/13
+
+same commands and generated files as before.
+
+second gcc version:
+gcc (GCC) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+icx commands:
+icx -o world_icx hello_world.c
+
+
+icx version:
+Intel(R) oneAPI DPC++/C++ Compiler 2024.0.0 (2024.0.0.20231017)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /software/oneapi/2024.0/compiler/2024.0/bin/compiler
+Configuration file: /software/oneapi/2024.0/compiler/2024.0/bin/compiler/../icx.cfg
+
+one cpu from /proc/cpuinfo:
+
+processor	: 31
+vendor_id	: AuthenticAMD
+cpu family	: 23
+model		: 49
+model name	: AMD EPYC 7262 8-Core Processor
+stepping	: 0
+microcode	: 0x830107a
+cpu MHz		: 3200.000
+cache size	: 512 KB
+physical id	: 1
+siblings	: 16
+core id		: 28
+cpu cores	: 8
+apicid		: 185
+initial apicid	: 185
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 16
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl umip rdpid overflow_recov succor smca sme sev sev_es
+bugs		: sysret_ss_attrs spectre_v1 spectre_v2 spec_store_bypass retbleed srso
+bogomips	: 6377.47
+TLB size	: 3072 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 43 bits physical, 48 bits virtual
+power management: ts ttp tm hwpstate cpb eff_freq_ro [13] [14]
+
+32 CPUS total 8 cores per CPU.
+
+Aufgabe 4
+[~] sbatch run.sh
+Submitted batch job 10431486
+
+[~] seff 10431486
+Job ID: 10431486
+Cluster: elwetritsch
+User/Group: passberg/sacc
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 3
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:00:12 core-walltime
+Job Wall-clock time: 00:00:04
+Memory Utilized: 20.00 KB
+Memory Efficiency: 0.00% of 800.00 MB
+

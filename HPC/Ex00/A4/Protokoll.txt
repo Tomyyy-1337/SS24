@@ -1,0 +1,17 @@
+this exercise was executed on skylake-96: Intel XEON SP 6126
+
+[~] sbatch run.sh
+Submitted batch job 10431486
+
+[~] seff 10431486
+Job ID: 10431486
+Cluster: elwetritsch
+User/Group: passberg/sacc
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 3
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:00:12 core-walltime
+Job Wall-clock time: 00:00:04
+Memory Utilized: 20.00 KB
+Memory Efficiency: 0.00% of 800.00 MB
