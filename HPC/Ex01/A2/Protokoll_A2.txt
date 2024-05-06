@@ -1,2 +1,6 @@
 Compile:
 [~] gcc -lm -O .\hello_world.c
+
+Programm Output:
+Hello World! 
+Compiler: Gcc Version 8.3

@@ -2,6 +2,10 @@
 Compile:
 [~] gcc -lm -O .\hello_world.c
 
+Programm Output:
+Hello World! 
+Compiler: Gcc Version 8.3
+
 3)
 a)
 To compare the performance of different versions of a programm, we need to messure the execution time
