@@ -8,3 +8,27 @@ execution time to get a more accurate result.
 To Compare the Performance of two different computeres, we need to run the same program on both computers
 and measure the execution time. The computer with the shorter execution time is faster. Again, we should
 run the program several times and take the average execution time to get a more accurate result.
+
+b + c)
+Running on Skylake 96:
+Debug mode (Gcc 8.5):
+Execution time = 3246[ms]
+Execution time = 3246300[us]
+Compiler: Gcc Version 8.5
+
+-O3 optimization flag (Gcc 8.5):
+Execution time = 9[ms]
+Execution time = 9571[us]
+Compiler: Gcc Version 8.5
+
+-O3 optimization flag (Gcc 13.2):
+Execution time = 9[ms]
+Execution time = 9497[us]
+Compiler: Gcc Version 13.2
+
+d)
+Unrolling yields no measurable improvements in performance but ~4mb larger executable.
+-O3 optimization flag and -funroll-all-loops (Gcc 13.2):
+Execution time = 9[ms]
+Execution time = 9603[us]
+Compiler: Gcc Version 13.2
