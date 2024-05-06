@@ -1,0 +1,14 @@
+2.
+Compile:
+[~] gcc -lm -O .\hello_world.c
+
+3.
+a)
+To compare the performance of different versions of a programm, we need to messure the execution time
+of both versions of the program on the same computer, solving the same Problem. A shorter execution time 
+indicates a better performance. We should run both versions of the program several times and take the average
+execution time to get a more accurate result.
+
+To Compare the Performance of two different computeres, we need to run the same program on both computers
+and measure the execution time. The computer with the shorter execution time is faster. Again, we should
+run the program several times and take the average execution time to get a more accurate result.
