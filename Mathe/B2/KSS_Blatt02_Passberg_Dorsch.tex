@@ -142,6 +142,7 @@ Nach der Formel aus Aufgabe 1 b) ergibt sich also:
 \end{enumerate}
 Die Spiegelungen $1,\ldots,5$ sind die Spiegelungen an den Geraden, die durch die Ecke und den Mittelpunkt des Fünfecks verlaufen. 
 
+\newpage
 \section*{Aufgabe 3}
 \subsection*{a)}
 Die Warscheinlichkeit, dass kein Brief beim Richtigen Empfänger ankommt ist $37,5\%$.
@@ -174,9 +175,31 @@ Die Warscheinlichkeit ergibt sich aus
 \end{align*}
 
 \section*{Aufgabe 4}
-\subsection*{a)}
-
-\subsection*{b)}
+\subsection*{a,b)}
+Die Anzahl der möglichen Würfe beträgt $6^n$. 
+Um die Gewinnwarhscheinlichkeit zu berechnen, betrachten wir die Gegenwarscheinlichkeit, also die Warscheinlichkeit, dass nicht alle Zahlen mindestens ein mal gewürfelt werden.
+Die Warscheinlichkeit zu verlieren ist die Anzahl der Möglichen Würfe bei denen 5 oder weniger verschiedene Zahlen gewürfelt werden, geteilt durch die Anzahl der möglichen Würfe. \\
+Die Anzahl der möglichen Würfe bei denen 5 oder weniger verschiedene Zahlen gewürfelt werden ist:
+\begin{align*}
+    \sum_{k=1}^{5} (-1)^{k+1} \binom{6}{k} \cdot k^n = 5^n \cdot \binom{6}{5} - 4^n \cdot \binom{6}{4} + 3^n \cdot \binom{6}{3} - 2^n \cdot \binom{6}{2} + 1^n \cdot \binom{6}{1} 
+\end{align*}
+Die Warscheinlichkeiten zu gewinnen/verlieren sind also:
+\begin{align*}
+    p_{\text{loss}}(n) &= \frac{\sum_{k=1}^{5} (-1)^{k+1} \binom{6}{k} \cdot k^n}{6^n} \\
+    p_{\text{win}}(n) &= 1 - \frac{\sum_{k=1}^{5} (-1)^{k+1} \binom{6}{k} \cdot k^n}{6^n}
+\end{align*}
+Werte für $p_{\text{win}}(n)$:
+\begin{itemize}
+    \item $n = 6$: $p_{\text{win}}(6) = 0.015$
+    \item $n = 7$: $p_{\text{win}}(7) = 0.054$
+    \item $n = 8$: $p_{\text{win}}(8) = 0.114$
+    \item $n = 9$: $p_{\text{win}}(9) = 0.189$
+    \item $n = 10$: $p_{\text{win}}(10) = 0.272$
+    \item $n = 11$: $p_{\text{win}}(11) = 0.356$
+    \item $n = 12$: $p_{\text{win}}(12) = 0.438$
+    \item $n = 13$: $p_{\text{win}}(13) = 0.514$
+\end{itemize}
+Bis 12 Runden hat die Bank einen Vorteil, ab 13 Runden hat der Spieler einen Vorteil.
 
 \subsection*{c)}
 \textbf{Code:}
@@ -239,6 +262,7 @@ fn get_paths_a(
 }
 \end{lstlisting}
 
+\newpage
 \subsection*{b)}
 \begin{lstlisting}
 fn get_paths_b(
