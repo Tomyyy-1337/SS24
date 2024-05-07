@@ -1,4 +1,43 @@
-2.
+1)
+a)
+Head1:
+PeakPerformance = CPI * Core_Frequency * Core_Count * CPU_Count
+    = 1 * 3.2Ghz * 8 * 2
+    = 51.2 GFLOPS
+head3:
+PeakPerformance = CPI * Core_Frequency * Core_Count * CPU_Count
+    = 1 * 2.6Ghz * 12 * 2
+    = 62.4 GFLOPS
+
+b)
+processor: Id of the cpu thread, starting at 0
+physical id: Id of the physical CPU, starting at 0
+siblings: Number of threads per core
+core id: Id of the core, starting at 0 
+cpu cores: number of physical cpu cores on the cpu
+
+c)
+head1:
+Cores per Cpu: 8
+Core_Frequency: 3.2 2Ghz
+Bytes to load: 16 (x[i] and z[i])
+Bytes to store: 8 (store ressult in y[i])
+
+Every loop step contains two loads, one store, one addition, one conditional branch and one increment.
+Only the values inside the Arrays need to be loadet from main memory, i is stored in the cache.
+We assume CPI = 1 from task 1a).
+Therfore 3 out of 6 operations access the main memory.
+The required memory bandwidth for one core is (3/6) * 8 Bytes * 3.2Ghz = 12.8 GB/s
+The required memory bandwidth for 8 Cores is 8 * 12.8 GB/s = 102.4 GB/s
+
+head3:
+Cores per Cpu: 12
+Core_Frequency: 2.6 Ghz
+The required memory bandwidth for one core is (3/6) * 8 Bytes * 2.6 Ghz = 10.4 GB/s
+The required memory bandwidth for 8 Cores is 12 * 10.4 GB/s = 124.8 GB/s
+
+
+2)
 Compile:
 [~] gcc -lm -O .\hello_world.c
 
@@ -39,4 +78,11 @@ Unrolling yields no measurable improvements in performance but ~4mb larger execu
 -O3 optimization flag and -funroll-all-loops (Gcc 13.2):
 Execution time = 9[ms]
 Execution time = 9603[us]
+Compiler: Gcc Version 13.2
+
+e)
+No difference in performance
+-O3 optimization flag and function in different file (Gcc 13.2):
+Execution time = 9[ms]
+Execution time = 9190[us]
 Compiler: Gcc Version 13.2

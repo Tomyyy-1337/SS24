@@ -32,3 +32,10 @@ Unrolling yields no measurable improvements in performance but ~4mb larger execu
 Execution time = 9[ms]
 Execution time = 9603[us]
 Compiler: Gcc Version 13.2
+
+e)
+No difference in performance
+-O3 optimization flag and function in different file (Gcc 13.2):
+Execution time = 9[ms]
+Execution time = 9190[us]
+Compiler: Gcc Version 13.2
