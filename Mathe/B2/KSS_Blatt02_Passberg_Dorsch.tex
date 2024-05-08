@@ -66,7 +66,7 @@ Nach der Formel aus Aufgabe 1 b) ergibt sich also:
 \end{align*}
     
 \subsection*{b)}
-
+\newpage
 \section*{Aufgabe 2}
 \begin{enumerate}
     \item[Identität] $a \to a$
@@ -142,36 +142,44 @@ Nach der Formel aus Aufgabe 1 b) ergibt sich also:
 \end{enumerate}
 Die Spiegelungen $1,\ldots,5$ sind die Spiegelungen an den Geraden, die durch die Ecke und den Mittelpunkt des Fünfecks verlaufen. 
 
-\newpage
 \section*{Aufgabe 3}
 \subsection*{a)}
 Die Warscheinlichkeit, dass kein Brief beim Richtigen Empfänger ankommt ist $37,5\%$.
 Die Anzahl der Permutaionen ist $4! = 24$.
 Die Anzahl der Permutationen, bei denen kein Brief beim Richtigen Empfänger ankommt ist $9$, das ergibt sich aus der Formel 
-für die Anzahl der fixpunktfreien Permutationen. 
-\begin{itemize}
-    \item n = 1: \\ 
-    $ a(n) = 0 $
-    \item n = 2: \\
-    $ a(n) = 1 $
-    \item n = 3: \\
-    $ a(n) = 2 $
-    \item n = 4: \\
-    $ a(n) = 9 $
-\end{itemize}
+für die Anzahl der fixpunktfreien Permutationen (Siehe b). 
 Die Warscheinlichkeit ergibt sich aus
 \begin{align*}
-    \frac{9}{4!} = 0.375
+    \frac{n! \cdot \sum_{k=0}^{n} \frac{(-1)^k}{k!}}{4!} = \frac{9}{4!} = 0.375
 \end{align*}
 
 \subsection*{b)}
+Seien $S_n$ die Permutationen einer Menge mit $n$ Elementen und 
 \begin{align*}
-    a(n) = \left\{ 
-        \begin{array}{ c l }
-            0 & \quad \textrm{if } n = 1 \\
-            n \cdot a(n-1) + (-1)^n & \quad \textrm{if } n > 1 \\
-        \end{array}
-    \right.
+    M_i = \{ s \in S_n \mid s(i) = i \} 
+\end{align*}
+die Menge der Permutationen mit einem Fixpunkt an der Stelle $i$.
+Die Menge der Fixpunkt freien Permutationen $ D_n $ ist dann 
+\begin{align*}
+    D_n = S_n \setminus \bigcup_{i=1}^{n} M_i
+\end{align*}
+Die Anzahl der Fixpunktfreien Permutaionen $ |D_n| $ ist also
+\begin{align*}
+    |D_n| = n! - \left| \bigcup_{i=1}^{n} M_i \right|
+\end{align*}
+Es gibt $ \binom{n}{k} $ mögliche Auswahlen von Fixpunkten für Permutationen einer $n$ elementigen Menge mit $k$ Fixpunkten. Für jede dieser Auswahlen gibt es $ (n-k)! $ Permutationen. 
+Die Anzahl der Permutationen mit mindestens einem Fixpunkt ergibt sich nach dem Inklusions-Exklusionsprinzip zu
+\begin{align*}
+    \left| \bigcup_{i=1}^{n} M_i \right| &= \sum_{k=1}^{n} (-1)^{k-1} \binom{n}{k} (n-k)! \\ 
+    &= \sum_{k=1}^{n} (-1)^{k-1} \frac{n!}{(n-k)! \cdot k!} (n-k)! \\
+    &= \sum_{k=1}^{n} (-1)^{k-1} \frac{n!}{k!}
+\end{align*}
+Damit ergibt sich die Anzahl der fixpunktfreien Permutationen zu
+\begin{align*}
+    |D_n| &= n! - \sum_{k=1}^{n} (-1)^{k-1} \frac{n!}{k!} \\
+    &= n! - n! \cdot \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k!} \\
+    &= n! + n! \cdot \sum_{k=1}^{n} \frac{(-1)^{k}}{k!} \\
+    &= n! \cdot \sum_{k=0}^{n} \frac{(-1)^k}{k!}
 \end{align*}
 
 \section*{Aufgabe 4}
@@ -238,6 +246,7 @@ Ab 13 Runden hat der Spieler einen Vorteil.
 Die Bank darf demnach maximal n = 12 wahlen.
 \end{lstlisting}
 
+\newpage
 \section*{Aufgabe 5}
 Schritte nach rechts werden mit 0 und Schritte nach unten mit 1 kodiert.
 \subsection*{a)}
@@ -262,7 +271,6 @@ fn get_paths_a(
 }
 \end{lstlisting}
 
-\newpage
 \subsection*{b)}
 \begin{lstlisting}
 fn get_paths_b(
@@ -284,7 +292,6 @@ fn get_paths_b(
     }
 }
 \end{lstlisting}    
-
 \textbf{Funktionsaufruf:}
 \begin{lstlisting}
 fn main() {
@@ -308,6 +315,7 @@ Aufgabenteil b: [[0, 0, 0, 1, 1], [0, 0, 1, 0, 1], [0, 0, 1, 1, 0],
 [0, 1, 0, 0, 1], [0, 1, 0, 1, 0]]
 \end{lstlisting}
 
+\newpage
 \section*{Aufgabe 6}
 \subsection*{a)}
 
