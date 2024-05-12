@@ -1,6 +1,6 @@
 fn main() {
-    let n = 8;
-    let m = 4;
+    let n = 7;
+    let m = 3;
     let result = partition(n, m);
     for p in result {
         println!("{:?}", p);
