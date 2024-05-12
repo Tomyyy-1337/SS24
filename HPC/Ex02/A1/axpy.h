@@ -1,0 +1,1 @@
+void calc(int arr_size, double *x, double *y, double a);

@@ -1,0 +1,90 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{url,amsmath,amssymb,mathrsfs,enumerate,dsfont}
+\usepackage[space,extendedchars]{grffile}
+\usepackage{algorithm,algorithmic}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usetikzlibrary{automata,arrows}
+\usepackage{subfigure}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{framed}
+\usepackage{paralist}
+\usepackage{multirow}
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\usetikzlibrary{arrows,shapes, automata}
+\setkomafont{disposition}{\normalfont\bfseries}
+\setlength\parindent{0pt}
+
+\title{Mathematik für Informatiker \\ Kombinatorik, Stochastik und Statistik}
+\subtitle{Übungsblatt 3}
+\author{Tom Paßberg , Iain Dorsch}
+\date{}
+\begin{document}
+
+\maketitle
+
+\newpage
+\section*{Aufgabe 1}
+\subsection*{a)}
+\textbf{Zu zeigen:} Für alle $ n \in \mathbb{N}_0$ gilt: 
+\begin{align*}
+    \sum_{j=0}^{n} \binom{n}{j} = 2^n
+\end{align*}
+
+\textbf{Beweis:} 
+\begin{itemize}
+    \item \textbf{Induktionsanfang:} $n = 0$
+    \begin{align*}
+        \sum_{j=0}^{0} \binom{0}{j} = \binom{0}{0} = 1 = 2^0
+    \end{align*}
+    \item \textbf{Induktionsvoraussetzung:} Für ein beliebiges, aber festes $n \in \mathbb{N}_0$ gilt:
+    \begin{align*}
+        \sum_{j=0}^{n} \binom{n}{j} = 2^n
+    \end{align*}
+    \item \textbf{Induktionsschritt:} $n \to n+1$
+    \begin{align}
+        \sum_{j=0}^{n+1} \binom{n+1}{j} &= 2 + \sum_{j=1}^{n} \binom{n+1}{j} \\ 
+        &= 2 + \sum_{j=1}^{n} \left( \binom{n}{j-1} + \binom{n}{j} \right) \\
+        &= 2 + \sum_{j=1}^{n} \binom{n}{j-1} + \sum_{j=1}^{n}\binom{n}{j} \\
+        &= 2 + \sum_{j=0}^{n-1} \binom{n}{j} + \sum_{j=1}^{n} \binom{n}{j} \\
+        &= \sum_{j=0}^{n} \binom{n}{j} + \sum_{j=0}^{n} \binom{n}{j} \\
+        &= 2 * \sum_{j=0}^{n} \binom{n}{j} \\
+        &= 2 * 2^n \\[8px]
+        &= 2^{n+1}
+    \end{align}
+    (1) und (4) folgt aus $ \binom{n}{0} = \binom{n}{n} = 1$. \\
+    (2) folgt aus Skript 1.2.14. \\
+    (7) folgt aus der Induktionsvoraussetzung. 
+\end{itemize}
+
+\subsection*{b)}
+\textbf{Zu zeigen:} Für alle $ n \in \mathbb{N}_0$ gilt:
+\begin{align*}
+    \sum_{j=0}^{n} \binom{n}{j}^2 = \binom{2n}{n}
+\end{align*}
+\textbf{Beweis:} 
+\begin{align}
+    \sum_{j=0}^{n} \binom{n}{j}^2 &= \sum_{j=0}^{n} \binom{n}{j} \binom{n}{j} \\
+    &= \sum_{j=0}^{n} \binom{n}{j} \binom{n}{n-j} \\
+    &= \binom{n+n}{n} \\
+    &= \binom{2n}{n}
+\end{align}
+(10) folgt aus Skript 1.2.5. \\
+(11) folgt aus Skript 1.2.12. 
+
+\end{document}
