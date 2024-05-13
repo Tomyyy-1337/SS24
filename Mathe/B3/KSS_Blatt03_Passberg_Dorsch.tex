@@ -69,7 +69,7 @@
         &= 2 \cdot 2^n \\[8px]
         &= 2^{n+1}
     \end{align}
-    (1) und (4) folgt aus $ \binom{n}{0} = \binom{n}{n} = 1$. \\
+    (1) und (5) folgt aus $ \binom{n}{0} = \binom{n}{n} = 1$. \\
     (2) folgt aus Skript 1.2.14. \\
     (7) folgt aus der Induktionsvoraussetzung. 
 \end{itemize}
@@ -164,7 +164,36 @@
     \end{center}
 \end{itemize}
 
+\newpage
 \section*{Aufgabe 3}
+\textbf{Zu zeigen:} Für alle $ n, m \in \mathbb{N}$ gilt für die Anzahl der geordneten Zahlpartitionen von $n$ in $m$ positive Summanden:
+\begin{align*}
+    P(n,m) = \binom{n-1}{m-1}
+\end{align*}
+\textbf{Beweis:}
+\begin{itemize}
+    \item Induktionsanfang: $m = 1$: \\
+    Für $ m = 1 $ ist die Anzahl der möglichen Partitionen von $ n $ in $ m $ positive Summanden gleich 1. \\
+    \begin{align*}
+        P(n,1) = 1 = \binom{n-1}{0}
+    \end{align*}
+    \item Induktionsvoraussetzung: \\
+    Die Aussage gilt für ein beliebige aber feste $ n, m \in \mathbb{N}$ und für alle $ n', m' \in \mathbb{N} $ mit $ n' < n $ und $ m' < m $.
+    \item Induktionsschritt:  \\
+    Die Anzahl der geordneten Zahlpartitionen von $ n $ in $ m $ positive Summanden lässt sich rekursiv berechnen aus der Summe der Anzahlen der geordneten 
+    Zahlpartitionen von $ n-i $ in $ m-1 $ positive Summanden für $ i = 1, \dots, n-m+1 $. Daraus folgt:
+    \begin{align}
+        P(n,m) &= \sum_{i=1}^{n-m+1} P(n-i, m-1) \\
+        &= \sum_{i=1}^{n-m+1} \binom{n-i-1}{m-2} \\
+        &= \sum_{i=0}^{n-m} \binom{m-2+i}{m-2} \\
+        &= \binom{m-2+n-m+1}{m-2+1} \\
+        &= \binom{n-1}{m-1}
+    \end{align}
+    (14) folgt aus der Induktionsvoraussetzung. \\
+    (15) invertiert die Reihenfolge der Summanden \\
+    (16) folgt aus $ \sum_{k=0}^m \binom{n + k}{n} = \binom{n + m + 1}{n + 1} $
+\end{itemize}
+    
 
 \section*{Aufgabe 4}
 \subsection*{a)}
