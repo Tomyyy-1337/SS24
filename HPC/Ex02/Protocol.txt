@@ -1,0 +1,17 @@
+A1)
+Without AVX
+
+icpc -O3 -c .\main.cpp
+icpc -O3 -c .\axpy.cpp
+icpc -O3 -o A1 .\main.o .\axpy.o
+
+With AVX
+
+icpc -O3 -xCOMMON-AVX512 -c .\main.cpp
+icpc -O3 -c .\axpy.cpp
+icpc -O3 -o A1 .\main.o .\axpy.o
+
+No/small difference in performance. The Bottleneck is the memory bandwidth.
+
+A2)
+ComputeSYMGS_ref takes 67% of CPU time. (See HotspotAnalysis.png)

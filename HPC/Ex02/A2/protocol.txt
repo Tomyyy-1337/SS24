@@ -1,0 +1,1 @@
+ComputeSYMGS_ref takes 67% of CPU time. (See HotspotAnalysis.png)

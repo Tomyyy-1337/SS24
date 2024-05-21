@@ -30,7 +30,14 @@ int main() {
         calc(n, x, y, a);
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = end - start;
-        std::cout << "Time for n = " << n << " is " << elapsed.count() << " seconds." << std::endl;
+        std::cout << "Time for n = " << n << " is " << elapsed.count() << " seconds" << std::endl;
     }
+    int n = pow(10, 8);
+    auto start = std::chrono::high_resolution_clock::now();
+    calc(n, x, y, a);
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "Performance " << (double) n * 1e-9 / (elapsed.count()) << " GFlops" << std::endl;
+    
     return 0;
 }

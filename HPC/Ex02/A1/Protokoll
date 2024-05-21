@@ -1,3 +1,0 @@
-g++ -O3 -c .\main.cpp
-g++ -O3 -c .\axpy.cpp
-g++ -O3 -o A1 .\main.o .\axpy.o
