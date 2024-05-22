@@ -14,17 +14,19 @@ fn partitions(n: u8, m: u8) -> Vec<Vec<Vec<u8>>> {
         return vec![vec![(1..=n).collect()]];
     }
 
-    let mut result = Vec::new();
-    for p in partitions(n - 1, m - 1).iter_mut() {
-        p.push(vec![n]);
-        result.push(p.clone());
-    }
-    for p in partitions(n-1, m) {
-        for i in 0..p.len() {
-            let mut p = p.clone();
-            p[i].push(n);
-            result.push(p);
-        }
-    }
-    result
+    let part1 = partitions(n-1, m).into_iter().flat_map(|p| {
+        (0..m as usize)
+            .map(|i| {
+                let mut p = p.clone();
+                p[i].push(n);
+                p
+            })
+            .collect::<Vec<_>>()
+        });
+
+    let part2 = partitions(n - 1, m - 1)
+        .into_iter()
+        .map(|mut p| { p.push(vec![n]); p });
+
+    part1.chain(part2).collect()
 }
