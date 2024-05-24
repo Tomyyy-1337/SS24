@@ -94,7 +94,7 @@ fn partitionen(input: Vec<u8>) -> Vec<Vec<Vec<u8>>> {
 \newpage
 \textbf{Erklärung:}
 \begin{itemize}
-    \item \textbf{2..5} : Basisfall für n = 0
+    \item \textbf{2..4} : Basisfall für n = 0
     \item \textbf{5} : Schleife über alle $ i = 0 \ldots n $ analog zur Summe in der Formel für die Bellschen Zahlen
     \item \textbf{6} : Erzeugt alle Teilmengen der Eingabe ohne das erste Element. $\binom{n}{i}$ Teilmengen
     \item \textbf{7..15} : Rekursiver Funktionsaufruf für alle erzeugten Teilmengen. Das Ergebiss ergibt sich aus der Partition der Teilmengen vereinigt mit der Restmenge. 
