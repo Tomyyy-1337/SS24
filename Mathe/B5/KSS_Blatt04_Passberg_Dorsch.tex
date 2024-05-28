@@ -1,0 +1,154 @@
+ \documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{url,amssymb,mathrsfs,enumerate,dsfont}
+\usepackage[space,extendedchars]{grffile}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usetikzlibrary{automata,arrows}
+\usepackage{subfigure}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{framed}
+\usepackage{paralist}
+\usepackage{multirow} 
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\usetikzlibrary{arrows,shapes, automata}
+\setkomafont{disposition}{\normalfont\bfseries}
+\setlength\parindent{0pt}
+
+\lstset
+{ %Formatting for code in appendix
+    language=c,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\title{Mathematik für Informatiker \\ Kombinatorik, Stochastik und Statistik}
+\subtitle{Übungsblatt 4}
+\author{Tom Paßberg , Iain Dorsch}
+\date{}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{Aufgabe 2}
+\subsection*{a)}
+\begin{lstlisting}
+fn partition(n: u32, m: u32) -> Vec<Vec<u32>> {
+	if m == 1 {
+		return vec![vec![n]];
+	}
+	(1..=n-m+1).flat_map(|i| 
+		partition(n-i, m-1)
+			.into_iter()
+			.filter(|p| p[p.len()-1] >= i)
+			.map(|mut p| { p.push(i); p })
+			.collect::<Vec<_>>()
+	).collect()
+}
+\end{lstlisting}
+\begin{itemize}
+	\item \textbf{2..4:} Basisfall für $m = 1$.
+	\item \textbf{5:} Schleife über $ i \in \{ 1,\ldots, n-m+1\} $
+	\item \textbf{6:} Rekursiver Aufruf mit $n-i$ und $m-1$.
+	\item \textbf{8:} Filtert alle Partitionen, bei denen das letzte Element kleiner als $i$ ist.
+	\item \textbf{9:} Fügt $i$ als neues Element hinzu.
+\end{itemize}
+\subsection*{b)}
+Ausgaben für $n = 7$ und $m \in \{1,2,3\}$:
+
+\begin{lstlisting}
+// m = 1
+[7]
+// m = 2
+[6, 1]
+[5, 2]
+[4, 3]
+// m = 3
+[5, 1, 1]
+[4, 2, 1]
+[3, 3, 1]
+[3, 2, 2]
+\end{lstlisting}
+
+\newpage
+\section*{Aufgabe 3}
+\subsection*{a)}
+\begin{lstlisting}
+fn partition(n: u32, m: u32) -> Vec<Vec<u32>> {
+	if m == 1 {
+		return vec![vec![n]];
+	}
+	(0..=n-m+1).flat_map(|i| 
+		partition(n-i, m-1)
+		.into_iter()
+		.filter(|p| p[p.len()-1] >= i)
+		.map(|mut p| { p.push(i); p })
+		.collect::<Vec<_>>()
+	).collect()
+}
+\end{lstlisting}
+\begin{itemize}
+	\item \textbf{5:} Schleife angepasst, damit auch $0$ als Element in der Partition vorkommen kann.
+\end{itemize}
+\subsection*{b)}
+Aufgabe für $n = 7$ und $m = 3$:
+\begin{lstlisting}
+[7, 0, 0]
+[6, 1, 0]
+[5, 2, 0]
+[4, 3, 0]
+[5, 1, 1]	
+[4, 2, 1]
+[3, 3, 1]
+[3, 2, 2]
+\end{lstlisting}
+
+\section*{Aufgabe 4}
+\section*{a)}
+Die Warscheinlichkeit $P(n)$, dass bei $n$ Würfen keine $6$ auftritt ist 
+\begin{align*}
+	P(n) = \frac{5^n}{6^n}
+\end{align*}
+Die Anzahl der möglichen Würfe ohne das Auftreten einer $6$ ist $5^n$, da es für jeden Wurf $5$ 
+Möglichkeiten gibt, eine Zahl zwischen $1$ und $5$ zu würfeln. Die Anzahl der möglichen Würfe 
+insgesamt ist $6^n$.	
+
+\section*{b)}
+Die Gewinnwahrscheinlichkeit $W(n) = 1 - P(n)$ ist die Gegenwarscheinlichkeit der Wahrscheinlichkeit, 
+dass bei $n$ Würfen keine $6$ auftritt. \\
+Wir suchen das kleinste $n$, bei dem $W(n) > 0.5$ und damit $ P(n) < 0.5$ ist.
+\begin{align*}
+	0.5 &< P(n) \\
+	0.5 &< \frac{5^n}{6^n} \\
+	0.5 &< \left(\frac{5}{6}\right)^n \\
+	\log_{\frac{5}{6}}(0.5) &< n \\
+	3.80 &< n
+\end{align*} 
+Ab n = 4 ist die Gewinnwahrscheinlichkeit größer als $50\%$.
+
+
+\end{document}
