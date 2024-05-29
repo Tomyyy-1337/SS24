@@ -1,0 +1,3 @@
+task 2:
+
+gcc -O3 -fopenmp -DSTREAM_TYPE=double -DNTIMES=10 -DSTREAM_ARRAY_SIZE=2500000000 -mcmodel=medium -o stream stream.c
