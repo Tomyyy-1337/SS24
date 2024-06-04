@@ -1,0 +1,190 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{url,amssymb,mathrsfs,enumerate,dsfont}
+\usepackage[space,extendedchars]{grffile}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usetikzlibrary{automata,arrows}
+\usepackage{subfigure}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{framed}
+\usepackage{paralist}
+\usepackage{multirow} 
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\usetikzlibrary{arrows,shapes, automata}
+\setkomafont{disposition}{\normalfont\bfseries}
+\setlength\parindent{0pt}
+
+\lstset
+{ %Formatting for code in appendix
+    language=c,
+    basicstyle=\footnotesize,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\title{Mathematik für Informatiker \\ Kombinatorik, Stochastik und Statistik}
+\subtitle{Übungsblatt 6}
+\author{Tom Paßberg , Iain Dorsch}
+\date{}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{Aufgabe 1}
+\subsection*{a)}
+Es gibt $n!$ Möglichkeiten $n$ Personen auf n Stühlen zu platzieren. Es gibt $n$ Möglichkeiten jede Anordnung zu drehen. \\
+Es gibt demnach $\frac{n!}{n} = (n-1)!$ mögliche Anordnungen.
+
+\subsection*{b)}
+Mögliche Anordnungen für $\{ 1,2,3,4 \}$: 
+\begin{align*}
+	&(1,2,3,4)\\
+	&(1,2,4,3)\\
+	&(1,3,2,4)\\
+	&(1,3,4,2)\\
+	&(1,4,2,3)\\
+	&(1,4,3,2)
+\end{align*}
+
+\section*{Aufgabe 2}
+\subsection*{a)}
+Sei die Warscheinlichkeit eine 1 zu würfeln $ P(1)$. Dann gilt 
+\begin{align*}
+	P(2) &= 2 \cdot P(1) \\
+	P(3) &= 3 \cdot P(1) \\
+	P(4) &= 4 \cdot P(1) \\
+	P(5) &= 5 \cdot P(1) \\
+	P(6) &= 6 \cdot P(1) 
+\end{align*}
+Die Summe der Warscheinlichkeiten muss 1 sein, also gilt
+\begin{align*}
+	1 &= P(1) + 2 \cdot P(1) + 3 \cdot P(1) + 4 \cdot P(1) + 5 \cdot P(1) + 6 \cdot P(1) \\
+	1 &= 21 \cdot P(1) \\
+	P(1) &= \frac{1}{21}
+\end{align*}
+Die Warscheinlichkeiten sind
+\begin{align*}
+	P(1) &= \frac{1}{21} \\
+	P(2) &= \frac{2}{21} \\
+	P(3) &= \frac{3}{21} \\
+	P(4) &= \frac{4}{21} \\
+	P(5) &= \frac{5}{21} \\
+	P(6) &= \frac{6}{21}
+\end{align*}
+
+\subsection*{b)}
+Die Warscheinlichkeit eine ungerade Zahl zu würfeln ist 
+\begin{align*}
+	P(1) + P(3) + P(5) &= \frac{1}{21} + \frac{3}{21} + \frac{5}{21} \\
+	&= \frac{3}{7}
+\end{align*}
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+\textbf{Induktionsanfang} \\
+Für $m = 1$ ist die Warscheinlichkeit mit einem $n$-seitigen Würfel eine 1 zu würfeln $\frac{1}{n}$. \\
+Die Warscheinlichkeit keine 1 zu würfeln ist $P(1) = 1 - \frac{1}{n} = \left(1 - \frac{1}{n}\right)^1$ \\
+\textbf{Induktionsvoraussetzung} \\
+Für ein beliebiges aber festes $m$ ist die Warscheinlichkeit mit einem $n$-seitigen Würfel mit $m$ 
+würfen keine 1 zu würfeln
+\begin{center}
+	$P(m) = \left(1 - \frac{1}{n}\right)^m$ 
+\end{center}
+\textbf{Induktionsschritt $m \to m+1$} \\
+Jeder weitere Wurf hat eine Warscheinlichkeit von $1 - \frac{1}{n}$ keine 1 zu würfeln. 
+\begin{align}
+	P(m+1) &= P(m) \cdot \left(1 - \frac{1}{n}\right) \\
+	&= \left(1 - \frac{1}{n}\right)^m \cdot \left(1 - \frac{1}{n}\right) \\
+	&= \left(1 - \frac{1}{n}\right)^{m+1}
+\end{align}
+(2) gilt nach der Induktionsvoraussetzung.
+
+\subsection*{b)}
+\textbf{Zu zeigen:} 
+\begin{align*}
+\lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^{n \cdot \ln(2)} = \frac{1}{2}
+\end{align*}
+\textbf{Beweis:} \\
+\begin{align}
+\lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^{n \cdot \ln(2)} &= \lim_{n \to \infty} e^{n \cdot \ln(2) \cdot  \ln(1-\frac{1}{n})} \\
+&= \lim_{n \to \infty} 2^{n \cdot \ln(1-\frac{1}{n})} \\
+&= \lim_{n \to \infty} 2^{\ln((1-\frac{1}{n})^n)} \\
+&= 2^{\ln(\lim_{n \to \infty} (1+\frac{-1}{n})^n)} \\
+&= 2^{\ln(e^{-1})} \\
+&= 2^{-1} \\
+&= \frac{1}{2}
+\end{align}
+(4) folgt aus dem Hinweis auf dem Übungsblatt. \\ 
+(8) folgt aus Skript Lemma 3.8.4. 
+
+\section*{Aufgabe 4}
+\textbf{Programmcode in Rust:}
+\begin{lstlisting}
+fn multimenge(input: &Vec<u8>, n: u8) -> Vec<Vec<u8>> {
+	if n == 0 {
+		return vec![vec![]];
+	}
+	if n == 1 {
+		return input.iter().map(|&x| vec![x]).collect();
+	}
+	multimenge(input, n - 1).iter().flat_map(|x| 
+		input.iter()
+			.filter(|&y| x[x.len() - 1] <= *y)
+			.map(|y: &u8| {
+				let mut z = x.clone();
+				z.push(*y);
+				z
+			})
+	).collect()
+}
+\end{lstlisting}
+\newpage
+\textbf{Funktionsaufruf:}
+\begin{lstlisting}
+fn main() {
+	let result = multimenge(&vec![1,2,3], 3);
+
+	for i in result {
+		println!("{:?}", i);
+	}
+}
+\end{lstlisting}
+\textbf{Ausgabe:}
+\begin{lstlisting}
+[1, 1, 1]
+[1, 1, 2]
+[1, 1, 3]
+[1, 2, 2]
+[1, 2, 3]
+[1, 3, 3]
+[2, 2, 2]
+[2, 2, 3]
+[2, 3, 3]
+[3, 3, 3]
+\end{lstlisting}
+
+\end{document}

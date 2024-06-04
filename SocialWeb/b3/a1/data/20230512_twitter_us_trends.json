@@ -1,0 +1,364 @@
+[
+    {
+        "trends": [
+            {
+                "name": "#fridaymorning",
+                "url": "http://twitter.com/search?q=%23fridaymorning",
+                "promoted_content": null,
+                "query": "%23fridaymorning",
+                "tweet_volume": 15164
+            },
+            {
+                "name": "Janelle Monae",
+                "url": "http://twitter.com/search?q=%22Janelle+Monae%22",
+                "promoted_content": null,
+                "query": "%22Janelle+Monae%22",
+                "tweet_volume": 60323
+            },
+            {
+                "name": "Durk",
+                "url": "http://twitter.com/search?q=Durk",
+                "promoted_content": null,
+                "query": "Durk",
+                "tweet_volume": 60034
+            },
+            {
+                "name": "#talkwithbecky",
+                "url": "http://twitter.com/search?q=%23talkwithbecky",
+                "promoted_content": null,
+                "query": "%23talkwithbecky",
+                "tweet_volume": 47252
+            },
+            {
+                "name": "#pitlight",
+                "url": "http://twitter.com/search?q=%23pitlight",
+                "promoted_content": null,
+                "query": "%23pitlight",
+                "tweet_volume": null
+            },
+            {
+                "name": "#FedUp",
+                "url": "http://twitter.com/search?q=%23FedUp",
+                "promoted_content": null,
+                "query": "%23FedUp",
+                "tweet_volume": null
+            },
+            {
+                "name": "#TearsOfTheKingdom",
+                "url": "http://twitter.com/search?q=%23TearsOfTheKingdom",
+                "promoted_content": null,
+                "query": "%23TearsOfTheKingdom",
+                "tweet_volume": 337317
+            },
+            {
+                "name": "Anderson Cooper",
+                "url": "http://twitter.com/search?q=%22Anderson+Cooper%22",
+                "promoted_content": null,
+                "query": "%22Anderson+Cooper%22",
+                "tweet_volume": 51664
+            },
+            {
+                "name": "Kirk Cameron",
+                "url": "http://twitter.com/search?q=%22Kirk+Cameron%22",
+                "promoted_content": null,
+                "query": "%22Kirk+Cameron%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Good Friday",
+                "url": "http://twitter.com/search?q=%22Good+Friday%22",
+                "promoted_content": null,
+                "query": "%22Good+Friday%22",
+                "tweet_volume": 63577
+            },
+            {
+                "name": "Linda Yaccarino",
+                "url": "http://twitter.com/search?q=%22Linda+Yaccarino%22",
+                "promoted_content": null,
+                "query": "%22Linda+Yaccarino%22",
+                "tweet_volume": 51486
+            },
+            {
+                "name": "Happy Friyay",
+                "url": "http://twitter.com/search?q=%22Happy+Friyay%22",
+                "promoted_content": null,
+                "query": "%22Happy+Friyay%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "J Cole",
+                "url": "http://twitter.com/search?q=%22J+Cole%22",
+                "promoted_content": null,
+                "query": "%22J+Cole%22",
+                "tweet_volume": 33033
+            },
+            {
+                "name": "Village People",
+                "url": "http://twitter.com/search?q=%22Village+People%22",
+                "promoted_content": null,
+                "query": "%22Village+People%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Daniel Penny",
+                "url": "http://twitter.com/search?q=%22Daniel+Penny%22",
+                "promoted_content": null,
+                "query": "%22Daniel+Penny%22",
+                "tweet_volume": 62314
+            },
+            {
+                "name": "Red Stallions",
+                "url": "http://twitter.com/search?q=%22Red+Stallions%22",
+                "promoted_content": null,
+                "query": "%22Red+Stallions%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Red Pill",
+                "url": "http://twitter.com/search?q=%22Red+Pill%22",
+                "promoted_content": null,
+                "query": "%22Red+Pill%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "All My Life",
+                "url": "http://twitter.com/search?q=%22All+My+Life%22",
+                "promoted_content": null,
+                "query": "%22All+My+Life%22",
+                "tweet_volume": 86009
+            },
+            {
+                "name": "Youngboy",
+                "url": "http://twitter.com/search?q=Youngboy",
+                "promoted_content": null,
+                "query": "Youngboy",
+                "tweet_volume": 32843
+            },
+            {
+                "name": "Mundi",
+                "url": "http://twitter.com/search?q=Mundi",
+                "promoted_content": null,
+                "query": "Mundi",
+                "tweet_volume": null
+            },
+            {
+                "name": "ON SALE NOW",
+                "url": "http://twitter.com/search?q=%22ON+SALE+NOW%22",
+                "promoted_content": null,
+                "query": "%22ON+SALE+NOW%22",
+                "tweet_volume": 27295
+            },
+            {
+                "name": "Mark Davis",
+                "url": "http://twitter.com/search?q=%22Mark+Davis%22",
+                "promoted_content": null,
+                "query": "%22Mark+Davis%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Etika",
+                "url": "http://twitter.com/search?q=Etika",
+                "promoted_content": null,
+                "query": "Etika",
+                "tweet_volume": 10671
+            },
+            {
+                "name": "World Economic Forum",
+                "url": "http://twitter.com/search?q=%22World+Economic+Forum%22",
+                "promoted_content": null,
+                "query": "%22World+Economic+Forum%22",
+                "tweet_volume": 43092
+            },
+            {
+                "name": "flo milli",
+                "url": "http://twitter.com/search?q=%22flo+milli%22",
+                "promoted_content": null,
+                "query": "%22flo+milli%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Finally Friday",
+                "url": "http://twitter.com/search?q=%22Finally+Friday%22",
+                "promoted_content": null,
+                "query": "%22Finally+Friday%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Twitter CEO",
+                "url": "http://twitter.com/search?q=%22Twitter+CEO%22",
+                "promoted_content": null,
+                "query": "%22Twitter+CEO%22",
+                "tweet_volume": 414887
+            },
+            {
+                "name": "The Extender",
+                "url": "http://twitter.com/search?q=%22The+Extender%22",
+                "promoted_content": null,
+                "query": "%22The+Extender%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "The WEF",
+                "url": "http://twitter.com/search?q=%22The+WEF%22",
+                "promoted_content": null,
+                "query": "%22The+WEF%22",
+                "tweet_volume": 59040
+            },
+            {
+                "name": "Katharine Hepburn",
+                "url": "http://twitter.com/search?q=%22Katharine+Hepburn%22",
+                "promoted_content": null,
+                "query": "%22Katharine+Hepburn%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Blue Pill",
+                "url": "http://twitter.com/search?q=%22Blue+Pill%22",
+                "promoted_content": null,
+                "query": "%22Blue+Pill%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Happy Friday Everyone",
+                "url": "http://twitter.com/search?q=%22Happy+Friday+Everyone%22",
+                "promoted_content": null,
+                "query": "%22Happy+Friday+Everyone%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Ronan",
+                "url": "http://twitter.com/search?q=Ronan",
+                "promoted_content": null,
+                "query": "Ronan",
+                "tweet_volume": null
+            },
+            {
+                "name": "Daily Quordle 473",
+                "url": "http://twitter.com/search?q=%22Daily+Quordle+473%22",
+                "promoted_content": null,
+                "query": "%22Daily+Quordle+473%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Truth Social",
+                "url": "http://twitter.com/search?q=%22Truth+Social%22",
+                "promoted_content": null,
+                "query": "%22Truth+Social%22",
+                "tweet_volume": 16402
+            },
+            {
+                "name": "Shabbat Shalom",
+                "url": "http://twitter.com/search?q=%22Shabbat+Shalom%22",
+                "promoted_content": null,
+                "query": "%22Shabbat+Shalom%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Today is Friday",
+                "url": "http://twitter.com/search?q=%22Today+is+Friday%22",
+                "promoted_content": null,
+                "query": "%22Today+is+Friday%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Twitter 2.0",
+                "url": "http://twitter.com/search?q=%22Twitter+2.0%22",
+                "promoted_content": null,
+                "query": "%22Twitter+2.0%22",
+                "tweet_volume": 136550
+            },
+            {
+                "name": "$TSLA",
+                "url": "http://twitter.com/search?q=%24TSLA",
+                "promoted_content": null,
+                "query": "%24TSLA",
+                "tweet_volume": 16362
+            },
+            {
+                "name": "NBCUniversal",
+                "url": "http://twitter.com/search?q=NBCUniversal",
+                "promoted_content": null,
+                "query": "NBCUniversal",
+                "tweet_volume": null
+            },
+            {
+                "name": "Destyn Hill",
+                "url": "http://twitter.com/search?q=%22Destyn+Hill%22",
+                "promoted_content": null,
+                "query": "%22Destyn+Hill%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Impeach",
+                "url": "http://twitter.com/search?q=Impeach",
+                "promoted_content": null,
+                "query": "Impeach",
+                "tweet_volume": 42642
+            },
+            {
+                "name": "Jordan Dingle",
+                "url": "http://twitter.com/search?q=%22Jordan+Dingle%22",
+                "promoted_content": null,
+                "query": "%22Jordan+Dingle%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "Chris Paul",
+                "url": "http://twitter.com/search?q=%22Chris+Paul%22",
+                "promoted_content": null,
+                "query": "%22Chris+Paul%22",
+                "tweet_volume": 19500
+            },
+            {
+                "name": "Kathy Griffin",
+                "url": "http://twitter.com/search?q=%22Kathy+Griffin%22",
+                "promoted_content": null,
+                "query": "%22Kathy+Griffin%22",
+                "tweet_volume": null
+            },
+            {
+                "name": "CEO of Twitter",
+                "url": "http://twitter.com/search?q=%22CEO+of+Twitter%22",
+                "promoted_content": null,
+                "query": "%22CEO+of+Twitter%22",
+                "tweet_volume": 121925
+            },
+            {
+                "name": "Hyrule",
+                "url": "http://twitter.com/search?q=Hyrule",
+                "promoted_content": null,
+                "query": "Hyrule",
+                "tweet_volume": 17159
+            },
+            {
+                "name": "It is Friday",
+                "url": "http://twitter.com/search?q=%22It+is+Friday%22",
+                "promoted_content": null,
+                "query": "%22It+is+Friday%22",
+                "tweet_volume": 18213
+            },
+            {
+                "name": "Bragg",
+                "url": "http://twitter.com/search?q=Bragg",
+                "promoted_content": null,
+                "query": "Bragg",
+                "tweet_volume": 21790
+            },
+            {
+                "name": "Dakota",
+                "url": "http://twitter.com/search?q=Dakota",
+                "promoted_content": null,
+                "query": "Dakota",
+                "tweet_volume": 11368
+            }
+        ],
+        "as_of": "2023-05-12T15:25:38Z",
+        "created_at": "2023-05-11T08:55:12Z",
+        "locations": [
+            {
+                "name": "United States",
+                "woeid": 23424977
+            }
+        ]
+    }
+]
