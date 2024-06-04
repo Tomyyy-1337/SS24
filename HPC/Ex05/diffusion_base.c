@@ -8,7 +8,6 @@
 #include <omp.h>
 #endif
 #include <assert.h>
-#include <sys/mman.h>
 
 #define REAL float
 #ifndef NX
@@ -60,27 +59,201 @@ diffusion_baseline(REAL *f1, REAL *f2, int nx, int ny, int nz,
                    REAL ce, REAL cw, REAL cn, REAL cs, REAL ct,
                    REAL cb, REAL cc, REAL dt,
                    int count) {
-  int i;
+  int i, x, y, z, c, w, e, n, s, b, t;
   for (i = 0; i < count; ++i) {
-    for (int z = 0; z < nz; z++) {
-      for (int y = 0; y < ny; y++) {
-        for (int x = 0; x < nx; x++) {
-          int c, w, e, n, s, b, t;
-          c =  x + y * nx + z * nx * ny;
-          w = (x == 0)    ? c : c - 1;
-          e = (x == nx-1) ? c : c + 1;
-          n = (y == 0)    ? c : c - nx;
-          s = (y == ny-1) ? c : c + nx;
-          b = (z == 0)    ? c : c - nx * ny;
-          t = (z == nz-1) ? c : c + nx * ny;
-          f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e]
-              + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[t];
-        }
-      }
+    c =  0;
+    e = c + 1;
+    s = c + nx;
+    t = c + nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[c] + ct * f1[t];
+    for (x = 1; x < nx-1; x++) {
+      c = x;
+      w = c - 1;
+      e = c + 1;
+      s = c + nx;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[c] + ct * f1[t];
     }
-    REAL *t = f1;
+    c =  x;
+    w = c - 1;
+    s = c + nx;
+    t = c + nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[c] + cb * f1[c] + ct * f1[t];
+    for (y = 1; y < ny - 1; y++) {
+      c =  y * nx;
+      e = c + 1;
+      n = c - nx;
+      s = c + nx;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+      for (x = 1; x < nx-1; x++) {
+        c =  x + y * nx;
+        w = c - 1;
+        e = c + 1;
+        n = c - nx;
+        s = c + nx;
+        t = c + nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+      }
+      c =  x + y * nx;
+      w = c - 1;
+      n = c - nx;
+      s = c + nx;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+    }
+    c =  y * nx;
+    e = c + 1;
+    n = c - nx;
+    t = c + nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+    for (x = 1; x < nx-1; x++) {
+      c =  x + y * nx;
+      w = c - 1;
+      e = c + 1;
+      n = c - nx;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+    }
+    c =  x + y * nx;
+    w = c - 1;
+    n = c - nx;
+    t = c + nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[c] + cn * f1[n] + cb * f1[c] + ct * f1[t];
+
+    for (z = 1; z < nz - 1; z++) {
+      c =  z * nx * ny;
+      e = c + 1;
+      s = c + nx;
+      b = c - nx * ny;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[t];
+      for (x = 1; x < nx-1; x++) {
+        c =  x + z * nx * ny;
+        w = c - 1;
+        e = c + 1;
+        s = c + nx;
+        b = c - nx * ny;
+        t = (z == nz-1) ? c : c + nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[t];
+      }
+      c =  x + z * nx * ny;
+      w = c - 1;
+      s = c + nx;
+      b = c - nx * ny;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[t];
+      for (y = 1; y < ny - 1; y++) {
+        c =  y * nx + z * nx * ny;
+        e = c + 1;
+        n = c - nx;
+        s = c + nx;
+        b = c - nx * ny;
+        t = c + nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+        for (x = 1; x < nx-1; x++) {
+          c =  x + y * nx + z * nx * ny;
+          w = c - 1;
+          e = c + 1;
+          n = c - nx;
+          s = c + nx;
+          b = c - nx * ny;
+          t = c + nx * ny;
+          f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+        }
+        c =  x + y * nx + z * nx * ny;
+        w = c - 1;
+        n = c - nx;
+        s = c + nx;
+        b = c - nx * ny;
+        t = c + nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+      }
+      c =  y * nx + z * nx * ny;
+      e = c + 1;
+      n = c - nx;
+      b = c - nx * ny;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+      for (x = 1; x < nx-1; x++) {
+        c =  x + y * nx + z * nx * ny;
+        w = c - 1;
+        e = c + 1;
+        n = c - nx;
+        b = c - nx * ny;
+        t = c + nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+      }
+      c =  x + y * nx + z * nx * ny;
+      w = c - 1;
+      n = c - nx;
+      b = c - nx * ny;
+      t = c + nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[t];
+    }
+    c =  z * nx * ny;
+    e = c + 1;
+    s = c + nx;
+    b = c - nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[c];
+    for (x = 1; x < nx-1; x++) {
+      c =  x + z * nx * ny;
+      w = c - 1;
+      e = c + 1;
+      s = c + nx;
+      b = c - nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[c];
+    }
+    c =  x + z * nx * ny;
+    w = c - 1;
+    s = c + nx;
+    b = c - nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[c] + cb * f1[b] + ct * f1[c];
+    for (y = 1; y < ny - 1; y++) {
+      c =  y * nx + z * nx * ny;
+      e = c + 1;
+      n = c - nx;
+      s = c + nx;
+      b = c - nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+      for (x = 1; x < nx-1; x++) {
+        c =  x + y * nx + z * nx * ny;
+        w = c - 1;
+        e = c + 1;
+        n = c - nx;
+        s = c + nx;
+        b = c - nx * ny;
+        f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+      }
+      c =  x + y * nx + z * nx * ny;
+      w = c - 1;
+      n = c - nx;
+      s = c + nx;
+      b = c - nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[s] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+    }
+    c =  y * nx + z * nx * ny;
+    e = c + 1;
+    n = c - nx;
+    b = c - nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[c] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+    for (x = 1; x < nx-1; x++) {
+      c =  x + y * nx + z * nx * ny;
+      w = c - 1;
+      e = c + 1;
+      n = c - nx;
+      b = c - nx * ny;
+      f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[e] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+    }
+    c =  x + y * nx + z * nx * ny;
+    w = c - 1;
+    n = c - nx;
+    b = c - nx * ny;
+    f2[c] = cc * f1[c] + cw * f1[w] + ce * f1[c] + cs * f1[c] + cn * f1[n] + cb * f1[b] + ct * f1[c];
+
+    REAL *tmp = f1;
     f1 = f2;
-    f2 = t;
+    f2 = tmp;
   }
   return;
 }
@@ -111,8 +284,6 @@ int main(int argc, char *argv[])
 
   REAL *f1 = (REAL *)malloc(sizeof(REAL)*NX*NX*NX);
   REAL *f2 = (REAL *)malloc(sizeof(REAL)*NX*NX*NX);
-  assert(f1 != MAP_FAILED);
-  assert(f2 != MAP_FAILED);
   REAL *answer = (REAL *)malloc(sizeof(REAL) * nx*ny*nz);
   REAL *f_final = NULL;
 
@@ -142,7 +313,7 @@ int main(int argc, char *argv[])
   dy=(4096.*4096.*dt*dx*kx*kx)/kappa/kappa;
   count=(int)dy;
   dy=dx;
- #fi
+ #endif
   f_final = (count % 2)? f2 : f1;
 
   init(f1, nx, ny, nz, kx, ky, kz, dx, dy, dz, kappa, time);

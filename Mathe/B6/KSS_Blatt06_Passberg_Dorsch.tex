@@ -53,22 +53,25 @@
 \maketitle
 
 \newpage
-
 \section*{Aufgabe 1}
 \subsection*{a)}
 Es gibt $n!$ Möglichkeiten $n$ Personen auf n Stühlen zu platzieren. Es gibt $n$ Möglichkeiten jede Anordnung zu drehen. \\
 Es gibt demnach $\frac{n!}{n} = (n-1)!$ mögliche Anordnungen.
 
 \subsection*{b)}
-Mögliche Anordnungen für $\{ 1,2,3,4 \}$: 
-\begin{align*}
-	&(1,2,3,4)\\
-	&(1,2,4,3)\\
-	&(1,3,2,4)\\
-	&(1,3,4,2)\\
-	&(1,4,2,3)\\
-	&(1,4,3,2)
-\end{align*}
+ 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw (0,0) -- (0,1) node[midway,left] {1} -- (1,1) node[midway,above] {2} -- (1,0) node[midway,right] {3} -- (0,0) node[midway,below] {4};
+\draw (2.5,0) -- (2.5,1) node[midway,left] {1} -- (3.5,1) node[midway,above] {2} -- (3.5,0) node[midway,right] {4} -- (2.5,0) node[midway,below] {3};
+\draw (5,0) -- (5,1) node[midway,left] {1} -- (6,1) node[midway,above] {3} -- (6,0) node[midway,right] {2} -- (5,0) node[midway,below] {4};
+\draw (7.5,0) -- (7.5,1) node[midway,left] {1} -- (8.5,1) node[midway,above] {3} -- (8.5,0) node[midway,right] {4} -- (7.5,0) node[midway,below] {2};
+\draw (10,0) -- (10,1) node[midway,left] {1} -- (11,1) node[midway,above] {4} -- (11,0) node[midway,right] {2} -- (10,0) node[midway,below] {3};
+\draw (12.5,0) -- (12.5,1) node[midway,left] {1} -- (13.5,1) node[midway,above] {4} -- (13.5,0) node[midway,right] {3} -- (12.5,0) node[midway,below] {2};
+\end{tikzpicture}
+\caption{Mögliche Anordnungen für $\{ 1,2,3,4 \}$}
+\end{figure}
 
 \section*{Aufgabe 2}
 \subsection*{a)}
@@ -128,7 +131,8 @@ Jeder weitere Wurf hat eine Warscheinlichkeit von $1 - \frac{1}{n}$ keine 1 zu w
 \begin{align*}
 \lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^{n \cdot \ln(2)} = \frac{1}{2}
 \end{align*}
-\textbf{Beweis:} \\
+
+\textbf{Beweis:} 
 \begin{align}
 \lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^{n \cdot \ln(2)} &= \lim_{n \to \infty} e^{n \cdot \ln(2) \cdot  \ln(1-\frac{1}{n})} \\
 &= \lim_{n \to \infty} 2^{n \cdot \ln(1-\frac{1}{n})} \\
