@@ -1,0 +1,55 @@
+task 1:
+run on epyc-256
+gcc -O3 -fopenmp -mcmodel=medium -o task1 task1.c
+
+Number of Threads requested = 1
+Number of Threads counted = 1
+elapsed time:    0.519130
+Number of Threads requested = 2
+Number of Threads counted = 2
+elapsed time:    0.460139
+Number of Threads requested = 3
+Number of Threads counted = 3
+elapsed time:    0.317411
+Number of Threads requested = 4
+Number of Threads counted = 4
+elapsed time:    0.385496
+Number of Threads requested = 5
+Number of Threads counted = 5
+elapsed time:    0.318987
+Number of Threads requested = 6
+Number of Threads counted = 6
+elapsed time:    0.365783
+Number of Threads requested = 7
+Number of Threads counted = 7
+elapsed time:    0.345512
+Number of Threads requested = 8
+Number of Threads counted = 8
+elapsed time:    0.320726
+Number of Threads requested = 9
+Number of Threads counted = 9
+elapsed time:    0.389585
+Number of Threads requested = 10
+Number of Threads counted = 10
+elapsed time:    0.364131
+Number of Threads requested = 11
+Number of Threads counted = 11
+elapsed time:    0.351389
+Number of Threads requested = 12
+Number of Threads counted = 12
+elapsed time:    0.334447
+Number of Threads requested = 13
+Number of Threads counted = 13
+elapsed time:    0.330265
+Number of Threads requested = 14
+Number of Threads counted = 14
+elapsed time:    0.327563
+Number of Threads requested = 15
+Number of Threads counted = 15
+elapsed time:    0.314497
+Number of Threads requested = 16
+Number of Threads counted = 16
+elapsed time:    0.313063
+
+
+most closely resembled by strong speedupm, but next ot no scaling.

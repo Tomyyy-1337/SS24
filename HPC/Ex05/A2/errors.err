@@ -1,0 +1,2 @@
+Failed to open topo.png for writing (File exists)
+slurmstepd: error: *** JOB 10725152 ON node178 CANCELLED AT 2024-06-05T17:51:23 DUE TO TIME LIMIT ***

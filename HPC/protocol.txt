@@ -1,0 +1,142 @@
+task 1:
+run on epyc-256
+gcc -O3 -fopenmp -mcmodel=medium -o task1 task1.c
+
+Number of Threads requested = 1
+Number of Threads counted = 1
+elapsed time:    0.519130
+Number of Threads requested = 2
+Number of Threads counted = 2
+elapsed time:    0.460139
+Number of Threads requested = 3
+Number of Threads counted = 3
+elapsed time:    0.317411
+Number of Threads requested = 4
+Number of Threads counted = 4
+elapsed time:    0.385496
+Number of Threads requested = 5
+Number of Threads counted = 5
+elapsed time:    0.318987
+Number of Threads requested = 6
+Number of Threads counted = 6
+elapsed time:    0.365783
+Number of Threads requested = 7
+Number of Threads counted = 7
+elapsed time:    0.345512
+Number of Threads requested = 8
+Number of Threads counted = 8
+elapsed time:    0.320726
+Number of Threads requested = 9
+Number of Threads counted = 9
+elapsed time:    0.389585
+Number of Threads requested = 10
+Number of Threads counted = 10
+elapsed time:    0.364131
+Number of Threads requested = 11
+Number of Threads counted = 11
+elapsed time:    0.351389
+Number of Threads requested = 12
+Number of Threads counted = 12
+elapsed time:    0.334447
+Number of Threads requested = 13
+Number of Threads counted = 13
+elapsed time:    0.330265
+Number of Threads requested = 14
+Number of Threads counted = 14
+elapsed time:    0.327563
+Number of Threads requested = 15
+Number of Threads counted = 15
+elapsed time:    0.314497
+Number of Threads requested = 16
+Number of Threads counted = 16
+elapsed time:    0.313063
+
+
+most closely resembled by strong speedupm, but next ot no scaling.
+
+
+task 2:
+a)
+
+compare diffusion_base with diffusion_opt without avx and with openmp on skylake-96:
+
+gcc -O3 -fopenmp -lm -o ./diffusion_opt_openmp ./diffusion_opt.c
+gcc -O3 -fopenmp -lm -o ./diffusion_base_openmp ./diffusion_base.c
+
+base:
+Elapsed time : 0.529 (s)
+FLOPS        : 2634.167 (MFlops)
+Throughput   : 2.432 (GB/s)
+Accuracy     : 1.742727e-05
+
+optimized:
+Elapsed time : 0.081 (s)
+FLOPS        : 17214.025 (MFlops)
+Throughput   : 15.890 (GB/s)
+Accuracy     : 1.742727e-05
+
+compare with avx and openmp on skylake-96:
+
+gcc -O3 -fopenmp -lm -mavx512f -mavx512cd -o ./diffusion_opt_avx ./diffusion_opt.c
+gcc -O3 -fopenmp -lm -mavx512f -mavx512cd -o ./diffusion_base_avx ./diffusion_base.c
+
+base:
+Elapsed time : 0.404 (s)
+FLOPS        : 3447.906 (MFlops)
+Throughput   : 3.183 (GB/s)
+Accuracy     : 1.759969e-05
+
+optimized:
+Elapsed time : 0.072 (s)
+FLOPS        : 19225.895 (MFlops)
+Throughput   : 17.747 (GB/s)
+Accuracy     : 1.759970e-05
+
+compare without openmp and without avx:
+
+gcc -O3 -lm -o ./diffusion_opt ./diffusion_opt.c
+gcc -O3 -lm -o ./diffusion_base ./diffusion_base.c
+
+base:
+Elapsed time : 296.691 (s)
+FLOPS        : 2902.133 (MFlops)
+Throughput   : 2.679 (GB/s)
+Accuracy     : 3.146962e-05
+
+optimized:
+Elapsed time : 47.277 (s)
+FLOPS        : 18212.426 (MFlops)
+Throughput   : 16.811 (GB/s)
+Accuracy     : 3.146962e-05
+
+b)
+
+base vs opt without openmp with avx:
+
+gcc -O3 -lm -mavx512f -mavx512cd -o ./diffusion_opt_avx ./diffusion_opt.c
+gcc -O3 -lm -mavx512f -mavx512cd -o ./diffusion_base_avx ./diffusion_base.c
+
+base:
+Elapsed time : 237.667 (s)
+FLOPS        : 3622.871 (MFlops)
+Throughput   : 3.344 (GB/s)
+Accuracy     : 1.587629e-05
+
+optimized:
+Elapsed time : 42.701 (s)
+FLOPS        : 20164.449 (MFlops)
+Throughput   : 18.613 (GB/s)
+Accuracy     : 1.587694e-05
+
+
+icc -O3 -xCOMMON-AVX512 -std=c11 -lm -o ./diffusion_opt_avx ./diffusion_opt.c
+
+Elapsed time : 110.987 (s)
+FLOPS        : 7757.998 (MFlops)
+Throughput   : 7.161 (GB/s)
+Accuracy     : 2.517214e-05
+
+
+c)
+skylake 96
+

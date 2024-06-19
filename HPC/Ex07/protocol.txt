@@ -1,0 +1,7 @@
+Build:
+[~] make
+
+Run
+[~] sbatch run.sh
+
+Running on Skylake-96, results in Results.xlsx and Results.png
