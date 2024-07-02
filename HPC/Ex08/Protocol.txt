@@ -1,0 +1,17 @@
+Load the openmpi:
+[~] module load openmpi/5.0.3
+
+Compile:
+See run-script
+
+Run the code:
+[~] sbatch run.sh
+
+a)
+main.cpp and main_alt.cpp take ~0.053 and ~0.063 to execute the loop with MPI.
+Ex06 Task 1 took 0.006492s on one core, 0.003055s on four cores and 0.001617s on all available cores on skylake-96 with OpenMP
+
+b)
+main_alt.cpp took 0.0476319s to execute.
+
+OpenMP performs much better than MPI. 

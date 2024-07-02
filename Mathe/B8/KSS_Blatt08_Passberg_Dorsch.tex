@@ -45,7 +45,7 @@
 }
 
 \title{Mathematik für Informatiker \\ Kombinatorik, Stochastik und Statistik}
-\subtitle{Übungsblatt 6}
+\subtitle{Übungsblatt 8}
 \author{Tom Paßberg , Iain Dorsch}
 \date{}
 \begin{document}
@@ -58,7 +58,7 @@ Die Gewinnwarscheinlichkeit läßt sich durch $(\frac{1}{2})^n$ beschreiben. Der
 Die Summe ist aufgeteilt in den Teil in dem der Gewinn variabel ist (hat noch nicht $2^{47}$ erreicht) und den Teil in dem der Gewinn aufgrund der Obergrenze konstant ist.
 
 \begin{align}
-	&\sum_{n=1}^{46} \	frac{2^n}{2^n} + \sum_{n=47}^{\infty} \dfrac{2^{47}}{2^n}\\
+	&\sum_{n=1}^{46} \frac{2^n}{2^n} + \sum_{n=47}^{\infty} \dfrac{2^{47}}{2^n}\\
 	= &\sum_{n=1}^{46} 1 + \sum_{n=0}^{\infty} \dfrac{2^{47}}{2^{n+47}}\\
 	= &46 + \sum_{n=0}^{\infty} \dfrac{1}{2^n}\\
 	= &46 + \dfrac{1}{1-\dfrac{1}{2}}\\
@@ -145,6 +145,17 @@ Mittlerer Gewinn: -0.02
 	\caption{Wahrscheinlichkeitsbaum}
 	\label{fig:3}
 \end{figure}
+
+\section*{Aufgabe 4}
+Sei $x \in M_1 \cup \dots \cup M_n$ und $m(x) \in P(M_1 \cup \dots \cup M_n)$.\\ $m(x)$ soll nur einmal zu $P(M_1 \cup \dots \cup M_n)$ beitragen\\ $\implies$ x soll nur einmal aus $M_1 \cup \dots \cup M_n$ ausgewählt werden.\\
+Liegt x in genau r der Mengen $M_i$, gilt $x \in M_1 \cap \dots \cap M_r$\\ $\implies m(x) \in P(M_1 \cap \dots \cap M_r)$.
+Dann wird $m(x)$ in $\sum_{|T| = k} P(M_T)$, mit $M_T = \bigcap_{i \in T} M_i$, genau $\binom{r}{k}$ - mal gezählt/ausgewählt, da man k aus r Mengen mit x wählen kann.\\
+$\implies$ $m(x)$ trägt zu $\sum_{|T| = k}P(M_T)$ genau mit 
+\begin{equation}
+	a = \sum_{k=1}^{r} (-1)^{k-1}\binom{r}{k}
+\end{equation}
+bei. Mit Corollar 1.2.26 gilt a=1.\\
+
 
 
 \end{document}
