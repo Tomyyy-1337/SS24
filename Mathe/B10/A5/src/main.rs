@@ -2,7 +2,7 @@ use rand::Rng;
 use rand::seq::IteratorRandom;
 
 fn main() {
-    let sample_size = 1000000000;
+    let sample_size = 10000000;
     
     let win_rate_keep_guess = evaluate_strategy(simulate_game_keep_guess, sample_size);
     let win_rate_change_guess = evaluate_strategy(simulate_game_change_guess, sample_size);
@@ -25,6 +25,6 @@ fn simulate_game_change_guess() -> bool {
     let wining_door: u8 = rand::thread_rng().gen_range(1..=3);
     let player_choice: u8 = rand::thread_rng().gen_range(1..=3);
     let host_choice = (1..=3).filter(|&door| door != player_choice && door != wining_door).choose(&mut rand::thread_rng()).unwrap();
-    let new_choice = (1..=3).filter(|&door| door != host_choice && door != player_choice).next().unwrap();
+    let new_choice = (1..=3).find(|&door| door != host_choice && door != player_choice).unwrap();
     new_choice == wining_door
 }
